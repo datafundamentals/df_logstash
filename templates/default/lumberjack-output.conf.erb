@@ -1,0 +1,4 @@
+output {
+  elasticsearch { host => <%= node['df_elasticsearch']['network_host'] %> }
+  stdout { codec => rubydebug }
+}
