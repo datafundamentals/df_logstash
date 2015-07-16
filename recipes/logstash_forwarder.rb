@@ -1,5 +1,5 @@
 apt_repository "logstashforwarder" do 
-	uri "deb http://packages.elasticsearch.org/logstashforwarder/debian stable main"
+	uri "http://packages.elasticsearch.org/logstashforwarder/debian stable main"
 	key "http://packages.elasticsearch.org/GPG-KEY-elasticsearch" 
 end
 
