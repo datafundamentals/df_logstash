@@ -222,7 +222,7 @@ basicConstraints = CA:FALSE
 keyUsage = nonRepudiation, digitalSignature, keyEncipherment
 
 [ v3_ca ]
-subjectAltName = IP: <%=node['private_ip'] %>  
+subjectAltName = IP: <%=node['df_logstash']['logstash_ip'] %>  
 
 # Extensions for a typical CA
 

@@ -1,9 +1,10 @@
-directory "/etc/pki/tls/private" do 
+directory "#{node['df_logstash']['ssl_path']}/private" do 
 	recursive true
 	mode "0751" 
 end
 
-directory "/etc/pki/tls/certs" do 
+directory "#{node['df_logstash']['ssl_path']}/certs" do 
+	recursive true
 	mode "0751" 
 end
 
@@ -14,8 +15,8 @@ template "/etc/ssl/openssl.conf" do
 end
 
 execute "create ssl cert" do 
-	command "openssl req -config /etc/ssl/openssl.cnf -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout /etc/pki/tls/private/logstash-forwarder.key -out /etc/pki/tls/certs/logstash-forwarder.crt"
+	command "openssl req -config /etc/ssl/openssl.cnf -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout #{node['df_logstash']['ssl_path']}/private/logstash-forwarder.key -out #{node['df_logstash']['ssl_path']}/certs/logstash-forwarder.crt"
 	action :run
-	not_if do ::File.exists?("etc/pki/tls/certs/logstash-forwarder.crt") end
+	not_if do ::File.exists?("#{node['df_logstash']['ssl_path']}/logstash-forwarder.crt") end
 end
 
