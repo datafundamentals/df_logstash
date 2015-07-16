@@ -31,3 +31,5 @@ end
 service "logstash" do 
 	action :restart
 end
+
+include_recipe "df_logstash::logstash_ssl" 
