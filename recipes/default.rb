@@ -9,7 +9,7 @@ apt_repository 'logstash' do
 	key 'http://packages.elasticsearch.org/GPG-KEY-elasticsearch'
 end
 
-apt_package "logstash" do 
+package "logstash" do 
 	action :install
 end
 
@@ -28,8 +28,8 @@ template "/etc/logstash/conf.d/30-lumberjack-output.conf" do
 	action :create
 end
 
+include_recipe "df_logstash::logstash_ssl" 
+
 service "logstash" do 
 	action :restart
 end
-
-include_recipe "df_logstash::logstash_ssl" 

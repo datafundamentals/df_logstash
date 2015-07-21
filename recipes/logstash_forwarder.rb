@@ -14,4 +14,5 @@ template "/etc/logstash-forwarder.conf" do
 end
  service "logstash-forwarder" do 
  	action :restart
+
  end
