@@ -1,4 +1,4 @@
 output {
-  elasticsearch { host => <%= node['df_logstash']['elasticsearch_host'] %> }
+  elasticsearch { host => <%= node['df_logstash']['elasticsearch_host'] %> protocol => "http" port => "9200" }
   stdout { codec => rubydebug }
 }
