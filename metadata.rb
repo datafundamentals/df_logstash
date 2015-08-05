@@ -4,6 +4,6 @@ maintainer_email 'you@example.com'
 license 'all_rights'
 description 'Installs/Configures df_logstash'
 long_description 'Installs/Configures df_logstash'
-version '0.1.4'
+version '0.1.5'
 
 depends 'apt'
