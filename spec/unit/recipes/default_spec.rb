@@ -14,7 +14,22 @@ describe 'df_logstash::default' do
     end
 
     it 'converges successfully' do
-      chef_run # This should not raise an error
+      expect(chef_run).to install_package('logstash')
+  end
+  it 'creates input config' do 
+  	expect(chef_run).to create_template('/etc/logstash/conf.d/01-lumberjack-input.conf')
+  end
+  it 'creates syslog config' do 
+  	expect(chef_run).to create_template('/etc/logstash/conf.d/10-syslog.conf')
+  end
+   it 'creates output config' do 
+  	expect(chef_run).to create_template('/etc/logstash/conf.d/30-lumberjack-output.conf')
+  end
+  it 'adds logstash_ssl recipe' do 
+  	expect(chef_run).to include_recipe("df_logstash::logstash_ssl")
+    end
+    it 'restarts logstash' do 
+    	expect(chef_run).to restart_service('logstash') 
     end
   end
 end
